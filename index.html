@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julieta Martínez — Creative Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --denim: #183b59;
+  --denim-dark: #102b43;
+  --blue-light: #426783;
+  --cream: #f0e9d9;
+  --red: #b64d43;
+  --ink: #172b3b;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--denim);
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(255,255,255,.025) 4px, transparent 5px),
+    repeating-linear-gradient(90deg, transparent 0px, transparent 3px, rgba(0,0,0,.07) 4px, transparent 5px),
+    radial-gradient(ellipse at 50% 20%, #315673 0%, #1b3d59 50%, #102b43 100%);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  opacity: .15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  padding: 26px 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Caveat', cursive;
+  font-size: 27px;
+  transform: rotate(-5deg);
+}
+
+nav {
+  display: flex;
+  gap: 30px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+nav a {
+  position: relative;
+  opacity: .8;
+  transition: opacity .25s;
+}
+
+nav a:hover { opacity: 1; }
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--cream);
+  transition: width .3s;
+}
+
+nav a:hover::after { width: 100%; }
+
+.hero {
+  min-height: 100vh;
+  padding: 150px 8vw 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before, .hero::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 1px dashed rgba(240,233,217,.25);
+  border-radius: 50%;
+}
+
+.hero::before { top: 18%; left: -100px; }
+.hero::after { bottom: 8%; right: -100px; }
+
+.hero-kicker {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: .75;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(75px, 13vw, 165px);
+  line-height: .85;
+  font-weight: 500;
+  margin: 0;
+  transform: rotate(-4deg);
+  text-shadow: 3px 5px 0 rgba(0,0,0,.12);
+}
+
+#typed-name {
+  display: inline-block;
+  min-height: 1em;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: .75em;
+  background: var(--cream);
+  margin-left: 5px;
+  animation: blink .7s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.hero-subtitle {
+  margin-top: 35px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(18px, 2.3vw, 27px);
+  max-width: 550px;
+  line-height: 1.4;
+}
+
+.hero-note {
+  position: absolute;
+  bottom: 50px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: .7;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+
+.sticker {
+  position: absolute;
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+  color: var(--cream);
+  transform: rotate(10deg);
+}
+
+.sticker.one { top: 31%; right: 13%; }
+.sticker.two { bottom: 24%; left: 12%; transform: rotate(-12deg); }
+
+.section {
+  padding: 110px 8vw;
+  position: relative;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 55px;
+  border-bottom: 1px solid rgba(240,233,217,.35);
+  padding-bottom: 18px;
+}
+
+.section-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(38px, 6vw, 72px);
+  margin: 0;
+}
+
+.section-heading span {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: .7;
+}
+
+.intro {
+  max-width: 700px;
+  margin: 0 auto 100px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.5;
+}
+
+.intro em { color: #e4b6a2; }
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 65px 45px;
+}
+
+.project {
+  cursor: pointer;
+  position: relative;
+  transition: transform .4s ease;
+}
+
+.project:nth-child(even) { margin-top: 75px; }
+.project:hover { transform: translateY(-9px) rotate(-.5deg); }
+
+.project-image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #d3c6ad;
+  border: 9px solid #e7dfce;
+  box-shadow: 0 12px 25px rgba(0,0,0,.25);
+  transform: rotate(-1deg);
+}
+
+.project:nth-child(even) .project-image { transform: rotate(1.5deg); }
+
+.project-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s ease, filter .5s;
+  filter: saturate(.85);
+}
+
+.project:hover .project-image img {
+  transform: scale(1.06);
+  filter: saturate(1.1);
+}
+
+.project-number {
+  position: absolute;
+  top: -20px;
+  left: -12px;
+  z-index: 2;
+  background: var(--red);
+  color: white;
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-family: 'Caveat', cursive;
+  font-size: 23px;
+  transform: rotate(-12deg);
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0 5px;
+}
+
+.project-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 0 0 5px;
+}
+
+.project-info p {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: .7;
+  margin: 0;
+}
+
+.project-arrow {
+  font-size: 25px;
+  transition: transform .3s;
+}
+
+.project:hover .project-arrow { transform: translate(5px, -5px); }
+
+.about {
+  background: rgba(8,28,44,.35);
+  border-top: 1px solid rgba(255,255,255,.15);
+  border-bottom: 1px solid rgba(255,255,255,.15);
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 70px;
+}
+
+.about-photo {
+  position: relative;
+  padding: 12px;
+  background: var(--cream);
+  transform: rotate(-3deg);
+  box-shadow: 0 15px 35px rgba(0,0,0,.2);
+}
+
+.about-photo img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+}
+
+.about-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 500;
+  line-height: 1;
+  margin: 0 0 25px;
+}
+
+.about-text p {
+  font-size: 15px;
+  line-height: 1.9;
+  opacity: .85;
+}
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 29px;
+  color: #e4b6a2;
+  transform: rotate(-4deg);
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.contact {
+  text-align: center;
+  padding: 130px 8vw 110px;
+}
+
+.contact h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(45px, 8vw, 95px);
+  font-weight: 500;
+  line-height: 1;
+  margin: 15px 0 30px;
+}
+
+.contact a.mail {
+  display: inline-block;
+  border: 1px solid var(--cream);
+  padding: 16px 30px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: background .3s, color .3s;
+}
+
+.contact a.mail:hover {
+  background: var(--cream);
+  color: var(--denim-dark);
+}
+
+footer {
+  padding: 25px 5vw;
+  border-top: 1px solid rgba(240,233,217,.25);
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: .7;
+}
+
+.sound-toggle {
+  position: fixed;
+  z-index: 30;
+  right: 25px;
+  bottom: 25px;
+  border: 1px solid rgba(240,233,217,.55);
+  color: var(--cream);
+  background: rgba(12,36,55,.85);
+  border-radius: 50px;
+  padding: 11px 15px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.sound-toggle:hover { background: var(--cream); color: var(--denim-dark); }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(5,17,27,.88);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  backdrop-filter: blur(8px);
+}
+
+.modal.active { display: flex; }
+
+.modal-content {
+  max-width: 750px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: auto;
+  background: #e9e1d0;
+  color: var(--ink);
+  padding: 25px;
+  position: relative;
+  animation: pop .35s ease;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(.94) translateY(15px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-content img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+}
+
+.modal-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 500;
+  margin: 20px 0 5px;
+}
+
+.modal-content p { line-height: 1.7; }
+
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  border: 0;
+  background: var(--denim-dark);
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 700px) {
+  header { padding: 20px 6vw; }
+  nav { gap: 13px; font-size: 9px; letter-spacing: 1px; }
+  .logo { font-size: 23px; }
+  .hero { min-height: 90vh; padding-top: 130px; }
+  .sticker.one { right: 5%; top: 22%; }
+  .sticker.two { left: 5%; bottom: 18%; }
+  .section { padding: 75px 6vw; }
+  .section-heading { margin-bottom: 35px; }
+  .projects { grid-template-columns: 1fr; gap: 45px; }
+  .project:nth-child(even) { margin-top: 0; }
+  .about-content { grid-template-columns: 1fr; gap: 40px; }
+  .about-photo { max-width: 380px; margin: auto; }
+  .about-text { text-align: center; }
+  footer { gap: 15px; flex-wrap: wrap; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="#inicio">julimar.</a>
+  <nav>
+    <a href="#trabajos">Trabajos</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="hero-kicker">Portfolio creativo · Publicidad</div>
+    <h1><span id="typed-name"></span><span class="cursor"></span></h1>
+    <p class="hero-subtitle">Ideas, palabras y cosas que empiezan en la cabeza y terminan en algún lugar.</p>
+    <span class="sticker one">¡Hola!</span>
+    <span class="sticker two">Hecho con ideas ✳</span>
+    <div class="hero-note">↓ Bajá un poquito y chusmeá</div>
+  </section>
+
+  <section class="section" id="trabajos">
+    <div class="section-heading reveal">
+      <h2>Mis trabajos</h2>
+      <span>Una selección de ideas · 01—06</span>
+    </div>
+
+    <p class="intro reveal">
+      Me gusta encontrar eso que todavía no se dijo.
+      <em>Y encontrar la forma de decirlo.</em>
+    </p>
+
+    <div class="projects">
+
+      <article class="project reveal"
+        data-title="Campaña 01"
+        data-category="Campaña publicitaria"
+        data-description="Una idea que empezó con una observación y terminó convertida en campaña. Acá va la descripción del proyecto, el desafío y el concepto creativo.">
+        <span class="project-number">01</span>
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000" alt="Proyecto creativo">
+        </div>
+        <div class="project-info">
+          <div>
+            <h3>Proyecto uno</h3>
+            <p>Campaña · Concepto</p>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+      </article>
+
+      <article class="project reveal"
+        data-title="Campaña 02"
+        data-category="Dirección creativa"
+        data-description="Una propuesta creativa para una marca. En este espacio podemos contar el insight, la idea y cómo se llevó a cabo.">
+        <span class="project-number">02</span>
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=1000" alt="Proyecto creativo">
+        </div>
+        <div class="project-info">
+          <div>
+            <h3>Proyecto dos</h3>
+            <p>Idea · Dirección creativa</p>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+      </article>
+
+      <article class="project reveal"
+        data-title="Campaña 03"
+        data-category="Redacción creativa"
+        data-description="Un proyecto para explorar el poder de las palabras. Acá podemos sumar las piezas y explicar el enfoque creativo.">
+        <span class="project-number">03</span>
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1000" alt="Proyecto de redacción">
+        </div>
+        <div class="project-info">
+          <div>
+            <h3>Proyecto tres</h3>
+            <p>Redacción · Ideas</p>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+      </article>
+
+      <article class="project reveal"
+        data-title="Campaña 04"
+        data-category="Proyecto académico"
+        data-description="Un trabajo desarrollado durante mi formación creativa. Podemos sumar acá las piezas finales y el proceso.">
+        <span class="project-number">04</span>
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1000" alt="Proyecto visual">
+        </div>
+        <div class="project-info">
+          <div>
+            <h3>Proyecto cuatro</h3>
+            <p>Concepto · Campaña</p>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section about" id="sobre-mi">
+    <div class="about-content">
+      <div class="about-photo reveal">
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=900" alt="Foto para reemplazar por una personal">
+      </div>
+      <div class="about-text reveal">
+        <span class="hero-kicker">Un poco sobre mí</span>
+        <h2>Detrás de las ideas, estoy yo.</h2>
+        <p>
+          Soy Julieta Martínez, creativa publicitaria. Me interesa pensar ideas,
+          escribir, observar lo que pasa alrededor y encontrar nuevas formas
+          de contar historias.
+        </p>
+        <p>
+          Disfruto el proceso de transformar una buena pregunta en una idea
+          que tenga algo para decir.
+        </p>
+        <span class="handwritten">Mucho gusto :)</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contacto">
+    <div class="hero-kicker">¿Hacemos algo interesante?</div>
+    <h2>Hablemos.</h2>
+    <a class="mail" href="mailto:TUEMAIL@GMAIL.COM">Escribime ↗</a>
+  </section>
+</main>
+
+<footer>
+  <span>Julieta Martínez © 2026</span>
+  <span>Portfolio creativo</span>
+  <a href="#inicio">Volver arriba ↑</a>
+</footer>
+
+<button class="sound-toggle" id="soundToggle">♫ SONIDO ON</button>
+
+<div class="modal" id="projectModal">
+  <div class="modal-content">
+    <button class="close-modal" id="closeModal">×</button>
+    <img id="modalImage" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <small id="modalCategory"></small>
+    <p id="modalDescription"></p>
+  </div>
+</div>
+
+<script>
+/* Nombre que se escribe al entrar */
+const nameText = "Julieta Martínez";
+const typedName = document.getElementById("typed-name");
+let letterIndex = 0;
+
+function typeName() {
+  if (letterIndex < nameText.length) {
+    typedName.textContent += nameText.charAt(letterIndex);
+    letterIndex++;
+    setTimeout(typeName, 125);
+  }
+}
+window.addEventListener("load", () => setTimeout(typeName, 500));
+
+/* Sonidos cortos al tocar elementos */
+let soundEnabled = true;
+let audioContext;
+
+function playClick() {
+  if (!soundEnabled) return;
+
+  try {
+    audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+
+    if (audioContext.state === "suspended") audioContext.resume();
+
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(650, audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(300, audioContext.currentTime + 0.055);
+
+    gain.gain.setValueAtTime(0.045, audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.07);
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.075);
+  } catch (error) {
+    console.log("Audio no disponible");
+  }
+}
+
+document.querySelectorAll("a, button, .project").forEach(element => {
+  element.addEventListener("click", playClick);
+});
+
+const soundToggle = document.getElementById("soundToggle");
+soundToggle.addEventListener("click", () => {
+  soundEnabled = !soundEnabled;
+  soundToggle.textContent = soundEnabled ? "♫ SONIDO ON" : "♫ SONIDO OFF";
+});
+
+/* Animaciones al aparecer en pantalla */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => observer.observe(element));
+
+/* Ventana de cada proyecto */
+const modal = document.getElementById("projectModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalCategory = document.getElementById("modalCategory");
+const modalDescription = document.getElementById("modalDescription");
+const modalImage = document.getElementById("modalImage");
+
+document.querySelectorAll(".project").forEach(project => {
+  project.addEventListener("click", () => {
+    modalTitle.textContent = project.dataset.title;
+    modalCategory.textContent = project.dataset.category;
+    modalDescription.textContent = project.dataset.description;
+    modalImage.src = project.querySelector("img").src;
+    modal.classList.add("active");
+  });
+});
+
+function closeProject() {
+  modal.classList.remove("active");
+}
+
+document.getElementById("closeModal").addEventListener("click", closeProject);
+modal.addEventListener("click", event => {
+  if (event.target === modal) closeProject();
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeProject();
+});
+</script>
+
+</body>
+</html>
+
